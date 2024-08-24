@@ -1,0 +1,3 @@
+node_modules/      
+# Exclude Node.js modules
+jspm_packages/
