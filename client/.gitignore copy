@@ -27,3 +27,7 @@ Thumbs.db
 # Exclude editor or IDE settings
 .vscode/
 .idea/
+
+
+
+# Vlogify: A multiuser blog platform featuring secure authentication, full CRUD for blogs, an admin dashboard, interactive comments, and optimized search with debouncing and advanced filters.
