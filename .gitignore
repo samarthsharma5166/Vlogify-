@@ -1,8 +1,8 @@
 # Exclude Node.js modules
-node_modules/
+node_modules
 
 # Exclude JSPM packages
-jspm_packages/
+jspm_packages
 
 # Exclude environment variables
 .env
