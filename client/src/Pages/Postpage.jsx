@@ -28,8 +28,10 @@ const Postpage = () => {
     }
   }
   useEffect(() => {
+    setBlogData({});
     getBlog();
-  }, []);
+  }, [slug]);
+   
 
   async function getRecentPost(){
     try {
@@ -66,7 +68,7 @@ const Postpage = () => {
       <img
         src={blogData.image && blogImage}
         alt="Not found 404!😢"
-        className="mt-10 p-3 max-h-[600px] w-full object-cover rounded-lg"
+        className="mt-10 p-3 max-h-[600px] w-full object-fill rounded-lg"
       />
       <div className="flex justify-between p-3 border-b border-slate-500 text-xs">
         <span>{blogData && new Date(blogData.createdAt).toLocaleDateString()}</span>
@@ -82,7 +84,7 @@ const Postpage = () => {
       <div className="flex flex-col justify-center items-center mb-5">
         <h1 className="text-xl mt-5 ">Recent Articles</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 juccent-center mt-5">
-          {recentPost && recentPost.map((blog) => <Blogcard key={blog._id} blog={blog}/>)}
+          {recentPost && recentPost.map((blog) =><Blogcard key={blog._id} blog={blog}/>)}
         </div>
       </div>
     </main>

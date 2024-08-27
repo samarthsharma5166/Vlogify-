@@ -68,29 +68,21 @@ const DashUsers = () => {
                   {new Date(user.createdAt).toLocaleDateString()}
                 </Table.Cell>
                 <Table.Cell>
-                  <Link to={`/post/${user}`}>
                     <img
                       src={user?.avatar?.secure_url}
                       alt="404 not found"
                       className="w-20 h-20 object-cover bg-gray-500 rounded-full"
                     />
-                  </Link>
                 </Table.Cell>
                 <Table.Cell>
-                  <Link
-                    to={`/post/${user}`}
-                    className="font-medium text-gray-900 dark:text-white"
-                  >
+                 
                     {user.username}
-                  </Link>
+                
                 </Table.Cell>
                 <Table.Cell>
-                  <Link
-                    to={`/post/${user}`}
-                    className="font-medium text-gray-900 dark:text-white"
-                  >
+                 
                     {user.email}
-                  </Link>
+                 
                 </Table.Cell>
               </Table.Row>
             </Table.Body>

@@ -22,7 +22,7 @@ gsap.registerPlugin(useGSAP);
 function App() {
   return (
     <>
-    <ScrollToTop/>
+      <ScrollToTop />
       <Headers />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -31,15 +31,14 @@ function App() {
         <Route path="/sign-in" element={<Signin />} />
         <Route path="/search" element={<Search />} />
         <Route path="/blogs" element={<Projects />} />
-        <Route element={<PrivateRoute/>}>
+        <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
-        <Route element={<PrivateRoute/>}>
-          <Route path="/create-post"  element={<CreatePost/>}/>
-          <Route path="/update-post/:postId"  element={<UpdatePost/>}/>
+        <Route element={<PrivateRoute />}>
+          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/update-post/:postId" element={<UpdatePost />} />
         </Route>
         <Route path="/post/:slug" element={<Postpage />} />
-
       </Routes>
       <Footer />
     </>

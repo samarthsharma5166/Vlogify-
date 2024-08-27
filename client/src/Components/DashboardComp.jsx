@@ -27,7 +27,6 @@ const DashboardComp = () => {
       const fetchUsers = async () => {
         const res = await dispatch(getdashusers(5));
         if (res?.payload) {
-          console.log(res.payload);
           const users = res.payload.users;
           setUsers([...users]);
           setTotaluser(res.payload.totalUsers);
@@ -37,7 +36,6 @@ const DashboardComp = () => {
       const fetchPosts = async () => {
         try {
           const res = await dispatch(getUserPosts(5));
-          console.log(res);
           if (res?.payload) {
             setBlogs(res.payload.blogs);
             setTotalPosts(res.payload.totalBlogs);
@@ -72,7 +70,7 @@ const DashboardComp = () => {
   }, []);
   return (
     <div className="p-3 md:mx-auto w-full ">
-      <div className="flex-wrap flex gap-4 justify-center">
+      <div className="flex-wrap flex gap-4 justify-center,w-full">
         <div className="flex flex-col p-3 dark:bg-slate-800 gap-4 md:w-72 w-full rounded-md shadow-md">
           <div className="flex justify-between">
             <div>
@@ -128,7 +126,7 @@ const DashboardComp = () => {
           </div>
         </div>
       </div>
-      <div className="flex mx-auto flex-wrap gap-4 py-3 justify-center w-[46.875vw]">
+      <div className="flex mx-auto flex-wrap gap-4 py-3 justify-center md:w-[46.875vw] w-full">
           <div className="flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800">
             <div className="flex justify-between p-3 text-sm font-semibold ">
               <h1 className="text-center p-2">Recent users</h1>
@@ -193,10 +191,10 @@ const DashboardComp = () => {
               }
             </Table>
           </div>
-          <div className="flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800">
+          <div className="flex flex-col w-full md:w-auto shadow-md p-2 rounded-md dark:bg-gray-800 overflow-y-auto">
             <div className="flex justify-between p-3 text-sm font-semibold ">
               <h1 className="text-center p-2">Recent blogs</h1>
-              <Link to='/dashboard?tab=users'>
+              <Link to='/dashboard?tab=posts'>
                 <Button gradientDuoTone="purpleToPink" outline>View All</Button>
               </Link>
             </div>
@@ -220,7 +218,7 @@ const DashboardComp = () => {
                         {(blog.image.secure_url !== "")?(<img src={blog.image.secure_url} className="w-14 h-10 rounded-md"/>):(<div className="w-10 h-10 bg-gray-500 rounded-full"/>)}
                       </Table.Cell>
                       <Table.Cell>
-                        <p className="w-96 line-clamp-2">{blog.title}</p>
+                        <p className="w-96 line-clamp-2 ">{blog.title}</p>
                       </Table.Cell>
                       <Table.Cell>
                         <p className="w-5">{blog.category}</p>

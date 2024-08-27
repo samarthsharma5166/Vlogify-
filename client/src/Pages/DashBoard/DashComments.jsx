@@ -115,7 +115,7 @@ const DashComments = () => {
         }
         </>
       ) : (
-        <p className="text-center font-semibold mt-5"> You have no blogs yet!</p>
+        <p className="text-center font-semibold mt-5"> You have no comments yet!</p>
       )}
 
       {/* <Modal

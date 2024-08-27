@@ -50,7 +50,7 @@ const DashSideBar = () => {
           </Link>
           <Link to="/dashboard?tab=users">
             <Sidebar.Item
-              active={tab === "posts"}
+              active={tab === "users"}
               icon={FaUsers}
               as="div"
             >

@@ -3,6 +3,8 @@ import AppError from "../utils/error.utils.js";
 const cookieOption = {
   httpOnly: true,
   secure: 'production',
+  maxAge: 1000 * 60 * 60 * 24,
+  sameSite: 'none',
 };
 export const signup = async (req, res, next) => {
   try {
