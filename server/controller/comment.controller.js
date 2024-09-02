@@ -97,7 +97,6 @@ export const deleteComment = async (req, res, next) => {
       message: "deleted successfully!",
     });
   } catch (error) {
-    console.log(error);
     return next(new AppError(error, 500));
   }
 };

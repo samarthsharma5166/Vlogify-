@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import BlogCard2 from '../Components/BlogCard2'
 import axiosInstance from '../Helper/axiosInstance';
+import toast from 'react-hot-toast';
 const Projects = () => {
   const [posts,setPosts] = useState([]);
   const [showMore,setShowMore] = useState(false);
@@ -17,7 +18,7 @@ const Projects = () => {
         }
       }
     }catch(err){
-      console.log(err);
+      toast.error(err?.response?.data?.message);
     }
   }
   const handleShowMore = async()=>{

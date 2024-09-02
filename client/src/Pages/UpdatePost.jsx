@@ -74,7 +74,6 @@ async function getBlogs(){
       });
     }
   }
-  console.log(userInput)
 
    async function handlePost(e) {
     e.preventDefault();

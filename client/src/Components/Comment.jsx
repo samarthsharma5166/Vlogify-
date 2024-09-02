@@ -19,7 +19,6 @@ const Comment = ({ comment, onLike,onEdit,onDelete }) => {
         setUserdata(data);
       }
     } catch (error) {
-      console.log(error);
       toast.error(error?.response?.data?.message);
     }
   };
@@ -34,7 +33,6 @@ const Comment = ({ comment, onLike,onEdit,onDelete }) => {
         onEdit(res.data.comment, editedContent);
       }
     } catch (error) {
-      console.log(error);
       toast.error(error?.response?.data?.message);
     }
   }

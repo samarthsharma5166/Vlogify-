@@ -26,7 +26,6 @@ export const updateUser = async (req, res, next) => {
       user.password = req.body.password;
     }
     if (req.body.username) {
-      console.log(req.body.username.length)
       if (req.body.username.length < 5 || req.body.username.length >20) {
         return next(new AppError("username must be between 5 and 20 characters✋", 400))
   

@@ -3,6 +3,7 @@ import Blog from "../models/blog.model.js";
 import cloudinary from "cloudinary";
 import fs from "fs/promises";
 import mongoose from "mongoose";
+import Comment from "../models/comment.model.js";
 export const create = async (req, res, next) => {
   if (!req.body.title || !req.body.content) {
     return next(new AppError(`All fields are required! 😢`, 400));
@@ -87,6 +88,7 @@ export const deletePost = async(req,res,next) =>{
   const id = req.params.id;
   try {
     const blog = await Blog.findById(id).populate('createdBy');
+    const comments = await Comment.find({blogId:id});
     if(req.user.id !== blog.createdBy._id.toString()){
       return next(new AppError(`you do not have permission to delete this post 😢`, 400));
     }
@@ -96,6 +98,9 @@ export const deletePost = async(req,res,next) =>{
         { type: 'upload', resource_type: 'image' });
     }
     await blog.deleteOne();
+    if(comments.length>0){
+      await Comment.deleteMany({blogId:id});
+    }
     return res.json({
       success:true,
       message:"deleted successfully!",
@@ -111,7 +116,6 @@ export const updatePost = async(req,res,next)=>{
  try {
    const blog = await Blog.findById(postId);
   if(req.user.id!== userId){
-    console.log("user id",req.user.id,postId);
     return next(new AppError(`you do not have permission to delete this post 😢`, 400));
   }
 
@@ -130,7 +134,6 @@ export const updatePost = async(req,res,next)=>{
   if(req.body.category){
     blog.category = req.body.category;
   }
-  console.log(req.file)
   if(req.file){
     try {
       if(blog.image.public_id){

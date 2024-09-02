@@ -44,7 +44,6 @@ export const getUserPosts = createAsyncThunk('post/getposts',async(data,{getStat
 })
 export const deleteBlog = createAsyncThunk('post/getposts',async(data,{getState})=>{
     try {
-        console.log(data)
         const res = axiosInstance.delete(`api/post/delete/${data}`);
         toast.promise(res,{
             loading:"Wait!...",
@@ -89,7 +88,6 @@ export const getBlogById = createAsyncThunk('post/getBlogById',async(data,{getSt
         });
         return (await res).data;
     } catch (error) {
-        console.log(error)
         toast.error(error?.response?.data?.message);
         return
     }
@@ -111,7 +109,6 @@ export const updatePostById = createAsyncThunk('post/getBlogById',async(data,{ge
         if(data.userInput.image){
             formData.append("image",data.userInput.image);
         }
-        console.log(data.postId)
         const res = axiosInstance.post(`api/post/update/${data.postId}/${Id}`,formData);
         toast.promise(res,{
             loading:'wait updating...',
@@ -122,7 +119,6 @@ export const updatePostById = createAsyncThunk('post/getBlogById',async(data,{ge
         });
         return (await res).data;
     } catch (error) {
-        console.log(error)
         toast.error(error?.response?.data?.message);
         return
     }
@@ -142,9 +138,8 @@ export const getBlogBySlug = createAsyncThunk('post/getBlogById',async(data,{get
         });
         return (await res).data;
     } catch (error) {
-        console.log(error)
         toast.error(error?.response?.data?.message);
-        return
+        return 
     }
 })
 

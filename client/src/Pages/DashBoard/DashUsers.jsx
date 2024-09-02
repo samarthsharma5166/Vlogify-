@@ -32,11 +32,9 @@ const DashUsers = () => {
   }, [data.user._id,reload]);
 
   async function handleShowMore(){
-    console.log(1)
     try {
       const startIndex = users.length
       const res = await dispatch(getusers(startIndex));
-      console.log(res.payload.users);
       if (res?.payload.users) {
         const users1 = res.payload.users
         setUsers((prev)=>[...prev,...users1])
@@ -44,7 +42,6 @@ const DashUsers = () => {
           setShowMore(false);
       } 
     } catch (error) {
-      console.log(error);
       toast(error?.response?.data?.message);
     }
   }

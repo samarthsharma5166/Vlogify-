@@ -63,7 +63,6 @@ export const updateUser = createAsyncThunk(`user/update`,async(data,{getState})=
         formData.append("password",data.password);
     }
 
-    console.log(formData)
     try {
         const res =  axiosInstance.put(`api/user/update/${Id}`,formData);
         toast.promise(res,{

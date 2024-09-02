@@ -18,13 +18,11 @@ const Home = () => {
     const fetchPosts = async () => {
       try {
         const res = await axiosInstance.get("api/post/getposts");
-        console.log(res.data);
         if (res?.data) {
           const blogs = res.data.blogs;
           setBlogs(blogs);
         }
       } catch (error) {
-        console.log(error);
         toast.error(error?.response?.data?.message);
       }
     };

@@ -55,7 +55,6 @@ export const deleteComment = createAsyncThunk('comment/delete',async(data)=> {
         })
         return (await res).data;
     } catch (error) {
-        console.log(error)
         toast.error(error?.response?.data?.message);
         return
     }
@@ -90,7 +89,6 @@ export const userdashComment = createAsyncThunk('comment/userComment',async(data
         })
         return (await res).data;
     } catch (error) {
-        console.log(error);
         toast.error(error?.response?.data?.message);
         return
     }

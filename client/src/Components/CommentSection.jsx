@@ -32,7 +32,6 @@ const CommentSection = ({ blogId }) => {
         setComments([res.payload.newComment, ...comments]);
       }
     } catch (error) {
-      console.log(error);
       toast.error(error?.response?.data?.message);
       return;
     }
@@ -61,7 +60,6 @@ const CommentSection = ({ blogId }) => {
       }
       
     } catch (error) {
-      console.log(error)
       toast.error(error?.response?.data?.message);
       return;
     }
@@ -79,7 +77,6 @@ const CommentSection = ({ blogId }) => {
       const res = await axiosInstance.put(
         `api/comment/likeComment/${commentId}`
       );
-      console.log(res.data.comment.numberOfLikes);
       if (res.data.success) {
         setComments(
           comments.map((comment) =>
@@ -94,7 +91,6 @@ const CommentSection = ({ blogId }) => {
         );
       }
     } catch (error) {
-      console.log(error);
       toast.error(error?.response?.data?.message);
     }
   };

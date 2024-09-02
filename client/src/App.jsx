@@ -29,7 +29,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<Signin />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/search" element={<Search/>} />
         <Route path="/blogs" element={<Projects />} />
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
@@ -38,7 +38,9 @@ function App() {
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/update-post/:postId" element={<UpdatePost />} />
         </Route>
-        <Route path="/post/:slug" element={<Postpage />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/post/:slug" element={<Postpage />} />
+        </Route>
       </Routes>
       <Footer />
     </>

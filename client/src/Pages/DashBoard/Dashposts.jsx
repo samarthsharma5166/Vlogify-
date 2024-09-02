@@ -41,7 +41,6 @@ const Dashposts = () => {
     setShowModel(false); 
     try {
       const res = await dispatch(deleteBlog(blogId));
-      console.log(res)
       if (res?.payload?.success) {
         setReload(!reload);
       }
@@ -49,13 +48,11 @@ const Dashposts = () => {
       setBlogId(null); // Highlighted: Reset the blogToDelete state
     } catch (error) {
       setBlogId(null);
-      console.log(error)
       toast(error?.response?.data?.data);
     }
   };
 
   async function handleShowMore(){
-    console.log(1)
     try {
       const res = await dispatch(getMorePosts(userBlog.length));
       if (res?.payload) {
@@ -64,7 +61,6 @@ const Dashposts = () => {
           setShowMore(false);
       } 
     } catch (error) {
-      console.log(error);
       toast(error?.response?.data?.message);
     }
   }

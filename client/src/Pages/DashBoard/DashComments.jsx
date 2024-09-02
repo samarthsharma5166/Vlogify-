@@ -16,9 +16,9 @@ const DashComments = () => {
   const getUsers = async () => {
     try {
       const res = await dispatch(userComment());
-      console.log(res.payload.comments)
       if (res?.payload?.success) {
-        setComments(res.payload.comments);
+        const comments = res.payload.comments
+        setComments(comments);
         if (res.payload.users.length < 9) {
           setShowMore(false);
         }else{
@@ -37,7 +37,6 @@ const DashComments = () => {
     try {
       const startIndex = users.length
       const res = await dispatch(getusers(startIndex));
-      console.log(res.payload.users);
       if (res?.payload.users) {
         const users1 = res.payload.users
         setUsers((prev)=>[...prev,...users1])
@@ -45,7 +44,6 @@ const DashComments = () => {
           setShowMore(false);
       } 
     } catch (error) {
-      console.log(error);
       toast(error?.response?.data?.message);
     }
   }
@@ -63,7 +61,6 @@ const DashComments = () => {
             <Table.HeadCell>post id</Table.HeadCell>
             <Table.HeadCell>user</Table.HeadCell>
           </Table.Head>
-
           {comments.map((comment) => (
             <Table.Body className="divide-y" key={comment._id}>
               <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -71,13 +68,12 @@ const DashComments = () => {
                   {new Date(comment.createdAt).toLocaleDateString()}
                 </Table.Cell>
                 <Table.Cell>
-                  <Link to={`/post/${comment.blogId.slug  }`}>
+                  <Link to={`/post/${comment?.blogId?.slug}`}>
                     <p>{comment.content}</p>
                   </Link>
                 </Table.Cell>
                 <Table.Cell>
                   <Link
-                    
                     className="font-medium text-gray-900 dark:text-white"
                   >
                     {comment.numberOfLikes}
@@ -85,25 +81,25 @@ const DashComments = () => {
                 </Table.Cell>
                 <Table.Cell>
                   <Link
-                    to={`/post/${comment.blogId.slug  }`}
+                    to={`/post/${comment?.blogId?.slug}`}
                   >
-                    <img src={comment.blogId.image.secure_url} alt="post image" className="w-20 rounded-lg"/>
+                    <img src={comment?.blogId?.image.secure_url} alt="post image" className="w-20 rounded-lg"/>
                   </Link>
                 </Table.Cell>
                 <Table.Cell>
                   <Link
-                    to={`/post/${comment.blogId.slug  }`}
+                    to={`/post/${comment?.blogId?.slug  }`}
                     className="font-medium text-gray-900 dark:text-white"
                   >
-                    {comment.blogId._id}
+                    {comment?.blogId?._id}
                   </Link>
                 </Table.Cell>
                 <Table.Cell>
                   <Link
-                    to={`/post/${comment.blogId.slug  }`}
+                    to={`/post/${comment?.blogId?.slug}`}
                     className="font-medium text-gray-900 dark:text-white"
                   >
-                    {comment.userId}
+                    {comment?.userId}
                   </Link>
                 </Table.Cell>
               </Table.Row>

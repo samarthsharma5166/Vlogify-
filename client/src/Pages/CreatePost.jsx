@@ -72,7 +72,6 @@ const CreatePost = () => {
     try {
       const res = await dispatch(createPost(userInput));
       if(res?.payload?.success){
-        console.log(res.payload);
         navigate(`/post/${res.payload.blog.slug}`);
       }
       } catch (error) {

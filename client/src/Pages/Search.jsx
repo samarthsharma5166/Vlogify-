@@ -60,7 +60,7 @@ const Search = () => {
           }
         }
       } catch (error) {
-        console.log(error);
+        toast.error(error?.response?.data?.message);
       }
     }
     fetchPosts();
@@ -96,7 +96,6 @@ const Search = () => {
     urlParams.set("sort", sideBar.sort);
     urlParams.set("category", sideBar.category);
     const searchQuery = urlParams.toString();
-    console.log(searchQuery);
     navigate(`/search?${searchQuery}`);
   };
   const handleShowMore = async() => {
