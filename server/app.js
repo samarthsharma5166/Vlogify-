@@ -11,10 +11,16 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({extended:true}));
-app.use(cors({
-    origin: "http://localhost:5173",
-    credentials: true
-  }));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://vlogify.samarthsharma.xyz",
+      "https://vlogify-kvmzwcl5w-samarth-sharmas-projects-85e2c57e.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 
   
 app.use('/api/user',userRouter)
