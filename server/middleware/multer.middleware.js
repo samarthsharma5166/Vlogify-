@@ -4,7 +4,7 @@ import AppError from '../utils/error.utils.js';
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/');
+        cb(null, path.resolve("uploads"));
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname);
